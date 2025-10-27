@@ -1,0 +1,10 @@
+name = "weather-dashboard"
+compatibility_date = "2024-10-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".open-next/worker"
+
+[env.production]
+name = "weather-dashboard"
+
+[observability]
+enabled = true
