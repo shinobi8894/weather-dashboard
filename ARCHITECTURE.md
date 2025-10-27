@@ -427,7 +427,7 @@ Page Bundle: 46 kB
 
 ### Typography
 
-- **Font**: Inter (Google Fonts)
+- **Font**: Urbanist (Google Fonts)
 - **Scales**: 
   - Temperature: 7xl (72px)
   - Headers: 3xl-4xl (30-36px)

@@ -20,6 +20,7 @@ export default function Home() {
   const [unit, setUnit] = useState<TemperatureUnit>('celsius');
   const [provider, setProvider] = useState<WeatherProvider>('openweather');
   const [availableProviders, setAvailableProviders] = useState<WeatherProvider[]>([]);
+  const [lastSearchedCity, setLastSearchedCity] = useState<string>('');
   const searchInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -51,6 +52,7 @@ export default function Home() {
   const handleSearch = async (city: string) => {
     setIsLoading(true);
     setError(null);
+    setLastSearchedCity(city);
 
     try {
       const data = await weatherService.fetchWeather(city, provider, unit);
@@ -60,6 +62,12 @@ export default function Home() {
       setWeather(null);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleRetry = () => {
+    if (lastSearchedCity) {
+      handleSearch(lastSearchedCity);
     }
   };
 
@@ -121,7 +129,7 @@ export default function Home() {
           {isLoading && <LoadingState />}
 
           {!isLoading && error && (
-            <ErrorState error={error} onRetry={() => weather && handleSearch(weather.current.city)} />
+            <ErrorState error={error} onRetry={handleRetry} />
           )}
 
           {!isLoading && !error && !weather && <EmptyState />}
