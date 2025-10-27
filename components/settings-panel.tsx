@@ -43,7 +43,7 @@ export function SettingsPanel({
       {isOpen && (
         <>
           <div
-            className="fixed inset-0 z-40"
+            className="fixed inset-0 z-[9996]"
             onClick={() => setIsOpen(false)}
           />
           <motion.div
@@ -51,7 +51,7 @@ export function SettingsPanel({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             className="absolute right-0 top-full mt-2 w-72 bg-white/95 backdrop-blur-md rounded-2xl 
-                     shadow-2xl border border-white/50 p-6 z-50"
+                     shadow-2xl border border-white/50 p-6 z-[9997]"
           >
             <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
               <Settings size={20} />

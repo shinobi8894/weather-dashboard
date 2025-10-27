@@ -56,3 +56,15 @@ body {
     opacity: 1;
   }
 }
+
+/* Ensure modals are always visible and properly layered */
+[role="dialog"],
+.modal-overlay {
+  position: fixed !important;
+  z-index: 9998 !important;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
