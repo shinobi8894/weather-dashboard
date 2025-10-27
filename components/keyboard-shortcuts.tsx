@@ -73,24 +73,24 @@ export function KeyboardShortcuts({ onToggleUnit, onFocusSearch }: KeyboardShort
 
       <AnimatePresence>
         {isOpen && (
-          <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[9998] flex items-center justify-center p-4"
+            onClick={() => setIsOpen(false)}
+          >
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+            
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9998] flex items-center justify-center p-4"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", duration: 0.3 }}
               role="dialog"
               aria-modal="true"
               aria-labelledby="shortcuts-title"
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-md 
-                       bg-white rounded-3xl shadow-2xl p-6 z-[9999] max-h-[90vh] overflow-y-auto
-                       mx-4 sm:mx-0"
+              className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 z-[9999] max-h-[85vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6">
@@ -121,7 +121,7 @@ export function KeyboardShortcuts({ onToggleUnit, onFocusSearch }: KeyboardShort
                 ))}
               </div>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
